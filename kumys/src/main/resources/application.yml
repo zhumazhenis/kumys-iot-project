@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql:kumys
-    username: kumys
-    password: kumys
+    url: jdbc:postgresql:kymyz
+    username: kymyz
+    password: kymyz
   jpa:
     generate-ddl: true
     properties:

@@ -1,4 +1,4 @@
-package group.orda.kumys.models;
+package group.orda.kymyz.models;
 
 import lombok.Data;
 
