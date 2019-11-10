@@ -31,7 +31,7 @@ public abstract class CommandMapper {
     public abstract CommandBean toCommandBean(Command command);
 
     @AfterMapping
-    public void afterToCommandBean(Command command, @MappingTarget CommandBean commandBean) {
+    void afterToCommandBean(Command command, @MappingTarget CommandBean commandBean) {
         List<CommandParameter> commandParameters = commandParameterRepository.findAllByCommandId(command.getId());
         List<CommandParameterBean> commandParameterBeans = commandParameters.stream().map(commandParameterMapper::toCommandParameterBean).collect(Collectors.toList());
         commandBean.setParameters(commandParameterBeans);

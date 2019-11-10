@@ -25,7 +25,7 @@ public abstract class ProcessMapper {
     public abstract ProcessBean toProcessBean(Process process);
 
     @AfterMapping
-    public void afterToProcessBean(Process process, @MappingTarget ProcessBean processBean) {
+    void afterToProcessBean(Process process, @MappingTarget ProcessBean processBean) {
         List<Command> commands = commandRepository.findAllByProcessId(process.getId());
         List<CommandBean> commandBeans = commands.stream().map(commandMapper::toCommandBean).collect(Collectors.toList());
         processBean.setCommands(commandBeans);

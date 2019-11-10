@@ -25,7 +25,7 @@ public abstract class InstructionMapper {
     public abstract InstructionBean toInstructionBean(Instruction instruction);
 
     @AfterMapping
-    public void afterToInstructionBean(Instruction instruction, @MappingTarget InstructionBean instructionBean) {
+    void afterToInstructionBean(Instruction instruction, @MappingTarget InstructionBean instructionBean) {
         List<InstructionProperty> instructionProperties = instructionPropertyRepository.findAllByInstructionId(instruction.getId());
         List<InstructionPropertyBean> instructionPropertyBeans = instructionProperties.stream().map(instructionPropertyMapper::toInstructionPropertyBean).collect(Collectors.toList());
         instructionBean.setProperties(instructionPropertyBeans);
