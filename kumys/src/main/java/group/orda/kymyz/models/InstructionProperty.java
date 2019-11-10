@@ -12,29 +12,24 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "commands")
-@SequenceGenerator(name = "CommandSequence", sequenceName = "command_seq", allocationSize = 1)
-public class Command {
+@Table(name = "instruction_properties")
+@SequenceGenerator(name = "InstructionPropertySequence", sequenceName = "instruction_property_seq", allocationSize = 1)
+public class InstructionProperty {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CommandSequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "InstructionPropertySequence")
     private Long id;
-    @ManyToOne
-    private Instruction instruction;
-    @ManyToOne
-    private Process process;
     @Column
-    private Date date;
+    private String name;
     @Column
     @Enumerated(EnumType.STRING)
-    private Status status;
-    @Column
-    private String message;
+    private Type type;
+    @ManyToOne
+    private Instruction instruction;
 
-    public enum Status {
-        COMPLETE, INCOMPLETE, ERROR
+    public enum Type {
+        NUMBER, STRING
     }
 }

@@ -48,5 +48,4 @@ public class RabbitConfig {
     public Binding commandBinding() {
         return BindingBuilder.bind(commandQueue()).to(kymyzExchange()).with(COMMAND_ROUTING_KEY);
     }
-
 }
