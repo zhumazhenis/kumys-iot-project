@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-commands',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./commands.component.css']
 })
 export class CommandsComponent implements OnInit {
+  commandsDataSource: MatTableDataSource<any>;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

@@ -10,18 +10,19 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "processes")
-@SequenceGenerator(name = "ProcessSequence", sequenceName = "process_seq", allocationSize = 1)
-public class Process {
+@Table(name = "measurement_properties")
+@SequenceGenerator(name = "MeasurementPropertySequence", sequenceName = "measurement_property_seq", allocationSize = 1)
+public class MeasurementProperty {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ProcessSequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MeasurementPropertySequence")
     private Long id;
     @ManyToOne
-    private Order order;
+    private Measurement measurement;
     @Column
-    private Date date;
+    private String name;
+    @Column
+    private String value;
 }
