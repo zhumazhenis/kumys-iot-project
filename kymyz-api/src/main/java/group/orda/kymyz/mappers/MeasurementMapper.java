@@ -5,6 +5,7 @@ import group.orda.kymyz.beans.MeasurementPropertyBean;
 import group.orda.kymyz.models.Measurement;
 import group.orda.kymyz.models.MeasurementProperty;
 import group.orda.kymyz.repositories.MeasurementPropertyRepository;
+import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,8 @@ public abstract class MeasurementMapper {
 
     public abstract MeasurementBean toMeasurementBean(Measurement measurement);
 
-    public void afterToMeasurementBean(Measurement measurement, @MappingTarget MeasurementBean measurementBean) {
+    @AfterMapping
+    protected void afterToMeasurementBean(Measurement measurement, @MappingTarget MeasurementBean measurementBean) {
         List<MeasurementProperty> measurementProperties = measurementPropertyRepository.findAllByMeasurementId(measurement.getId());
         List<MeasurementPropertyBean> measurementPropertyBeans = measurementProperties.stream().map(measurementPropertyMapper::toMeasurementPropertyBean).collect(Collectors.toList());
         measurementBean.setProperties(measurementPropertyBeans);
