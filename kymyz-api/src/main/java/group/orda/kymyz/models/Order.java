@@ -22,16 +22,16 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "OrderSequence")
     private Long id;
     @Column
-    private Integer numberOfCups;
-    @Column
-    private Double volume;
-    @Column
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private Status status = Status.INQUEUE;
     @Column
-    private Date date;
+    private Date date = new Date();
+    @Column
+    private Integer fullCups = 0;
+    @Column
+    private Integer halfCups = 0;
 
     public enum Status {
-        ACCEPTED, INPROCESS, DONE
+        INQUEUE, INPROCESS, DONE
     }
 }
