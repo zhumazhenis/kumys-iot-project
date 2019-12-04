@@ -1,0 +1,33 @@
+<h2>Order Details</h2>
+<br>
+<table mat-table [dataSource]="orderEntriesDataSource" class="mat-elevation-z8">
+
+  <!-- Index -->
+  <ng-container class="mat-column-date" matColumnDef="index">
+    <th mat-header-cell *matHeaderCellDef>Cup Number</th>
+    <td mat-cell *matCellDef="let orderEntry">
+      {{orderEntry['index']}}
+    </td>
+  </ng-container>
+
+  <!-- Type -->
+  <ng-container class="mat-column-full-cups" matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef>Type</th>
+    <td mat-cell *matCellDef="let orderEntry">
+      {{orderEntry['type']}}
+    </td>
+  </ng-container>
+
+  <!-- Status -->
+  <ng-container class="mat-column-half-cups" matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef>Status</th>
+    <td mat-cell *matCellDef="let orderEntry">
+      {{orderEntry['status']}}
+      <mat-icon *ngIf="orderEntry['']">invert_colors</mat-icon>
+    </td>
+
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row class="example-element-row" *matRowDef="let orderEntry; columns: columnsToDisplay;"></tr>
+</table>

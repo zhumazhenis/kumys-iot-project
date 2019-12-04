@@ -13,11 +13,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitConfig {
 
-    public static final String KYMYZ_DIRECT_EXCHANGE = "kymyz-direct";
+    public static final String KYMYZ_DIRECT_EXCHANGE = "";
 
-    public static final String COMMAND_QUEUE = "command-queue";
-    public static final String COMMAND_ROUTING_KEY = "command-queue";
-
+    public static final String ORDERS_QUEUE = "orders";
+    public static final String ORDERS_ROUTING_KEY = "orders";
 
     @Bean
     public DirectExchange kymyzExchange() {
@@ -40,12 +39,13 @@ public class RabbitConfig {
     }
 
     @Bean
-    public Queue commandQueue() {
-        return new Queue(COMMAND_QUEUE);
+    public Queue ordersQueue() {
+        return new Queue(ORDERS_QUEUE);
     }
 
     @Bean
-    public Binding commandBinding() {
-        return BindingBuilder.bind(commandQueue()).to(kymyzExchange()).with(COMMAND_ROUTING_KEY);
+    public Binding ordersBinding() {
+        return BindingBuilder.bind(ordersQueue()).to(kymyzExchange()).with(ORDERS_ROUTING_KEY);
     }
+
 }

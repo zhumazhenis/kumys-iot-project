@@ -9,6 +9,6 @@ public class OrderBean {
     private Long id;
     private String status;
     private Date date;
-    private Integer fullCups;
-    private Integer halfCups;
+    private Long fullCups;
+    private Long halfCups;
 }

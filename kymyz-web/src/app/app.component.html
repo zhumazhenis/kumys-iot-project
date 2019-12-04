@@ -1,9 +1,14 @@
-<div fxLayout="column" fxLayoutAlign="space-around center">
+<div fxLayout="row" fxLayoutAlign="space-around ">
 
-  <button mat-flat-button color="primary">Click Me!</button>
+  <div fxLayout="column" fxLayoutAlign="space-around" fxFlex="60%">
+
+    <div fxFlexAlign="center">
+      <h1>Orda Group Kymyz Factory</h1>
+    </div>
+
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>
 
-
-<div>
-  <router-outlet></router-outlet>
-</div>

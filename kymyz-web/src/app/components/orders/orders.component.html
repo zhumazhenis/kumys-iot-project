@@ -1,1 +1,52 @@
-<p>orders works!</p>
+<h2>Orders</h2>
+<div>
+  <button mat-flat-button color="primary" (click)="openDialog()">Place order</button>
+</div>
+<br>
+
+<table mat-table [dataSource]="ordersDataSource" class="mat-elevation-z8">
+
+  <!-- ID -->
+  <ng-container class="mat-column-id" matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>Order ID</th>
+    <td mat-cell *matCellDef="let order">
+      {{order['id']}}
+    </td>
+  </ng-container>
+
+  <!-- Date -->
+  <ng-container class="mat-column-date" matColumnDef="date">
+    <th mat-header-cell *matHeaderCellDef>Date</th>
+    <td mat-cell *matCellDef="let order">
+      {{order['date']}}
+    </td>
+  </ng-container>
+
+  <!-- FullCups -->
+  <ng-container class="mat-column-full-cups" matColumnDef="fullCups">
+    <th mat-header-cell *matHeaderCellDef>Full Cups</th>
+    <td mat-cell *matCellDef="let order">
+      {{order['fullCups']}}
+    </td>
+  </ng-container>
+
+  <!-- Half Cups -->
+  <ng-container class="mat-column-half-cups" matColumnDef="halfCups">
+    <th mat-header-cell *matHeaderCellDef>Half Cups</th>
+    <td mat-cell *matCellDef="let order">
+      {{order['halfCups']}}
+    </td>
+  </ng-container>
+
+  <!-- Status -->
+  <ng-container class="mat-column-status" matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef>Status</th>
+    <td mat-cell *matCellDef="let order">
+      {{order['status']}}
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row (click)="navigateTo(order)" class="example-element-row"
+      *matRowDef="let order; columns: columnsToDisplay;"></tr>
+</table>

@@ -4,27 +4,52 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { CommandsComponent } from './components/commands/commands.component';
-import { ProcessesComponent } from './components/processes/processes.component';
-import {MatButtonModule, MatTableModule} from '@angular/material';
-import { OrdersComponent } from './components/orders/orders.component';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatTableModule
+} from '@angular/material';
+import {OrdersComponent} from './components/orders/orders.component';
+
+import {HttpClientModule} from '@angular/common/http';
+import {FlexLayoutModule, FlexModule} from '@angular/flex-layout';
+import {OrderEntriesComponent} from './components/order-entries/order-entries.component';
+import {OrderDialogComponent} from './components/order-dialog/order-dialog.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CommandsComponent,
-    ProcessesComponent,
     OrdersComponent,
+    OrderEntriesComponent,
+    OrderDialogComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    HttpClientModule,
+    FlexModule,
+    FlexLayoutModule,
+    MatFormFieldModule,
+    FormsModule,
+    MatDialogModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    MatCardModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    OrderDialogComponent
+  ]
 })
 export class AppModule {
 }

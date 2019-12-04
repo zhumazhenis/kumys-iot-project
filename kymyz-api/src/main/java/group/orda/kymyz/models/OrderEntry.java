@@ -37,6 +37,6 @@ public class OrderEntry {
     }
 
     public enum Status {
-        INQUEUE, PUTTED, FILLED, SORTED
+        INQUEUE, PUT, FILLED, SORTED
     }
 }

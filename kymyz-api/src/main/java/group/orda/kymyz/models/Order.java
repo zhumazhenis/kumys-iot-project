@@ -23,13 +23,13 @@ public class Order {
     private Long id;
     @Column
     @Enumerated(EnumType.STRING)
-    private Status status = Status.INQUEUE;
+    private Status status;
     @Column
-    private Date date = new Date();
+    private Date date;
     @Column
-    private Integer fullCups = 0;
+    private Long fullCups;
     @Column
-    private Integer halfCups = 0;
+    private Long halfCups;
 
     public enum Status {
         INQUEUE, INPROCESS, DONE
