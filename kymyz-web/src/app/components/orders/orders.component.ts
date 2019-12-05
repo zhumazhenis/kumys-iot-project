@@ -14,7 +14,7 @@ import {Router} from '@angular/router';
 })
 export class OrdersComponent implements OnInit {
   ordersDataSource = new MatTableDataSource<any>([]);
-  columnsToDisplay = ['id', 'fullCups', 'halfCups', 'date', 'status'];
+  columnsToDisplay = ['id', 'fullCups', 'halfCups', 'status'];
 
   constructor(
     private orderService: OrderService,
@@ -45,8 +45,10 @@ export class OrdersComponent implements OnInit {
           return EMPTY;
         }
       )
+    ).pipe(
+      switchMap(response => this.orderService.getAllOrders(0, 100))
     ).subscribe(response => {
-        console.log(response);
+        this.ordersDataSource.data = response['content'];
       }
     );
   }
@@ -56,4 +58,15 @@ export class OrdersComponent implements OnInit {
     this.router.navigate(['orders', row.id]);
   }
 
+  getAvailableCups() {
+    let s = 0;
+    for (const order of this.ordersDataSource.data) {
+      s += order['fullCups'];
+      s += order['halfCups'];
+    }
+    if (10 - s >= 0) {
+      return 10 - s;
+    }
+    return 0;
+  }
 }

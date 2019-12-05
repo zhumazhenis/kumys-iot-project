@@ -3,7 +3,7 @@
   <button mat-flat-button color="primary" (click)="openDialog()">Place order</button>
 </div>
 <br>
-
+<p>Available cups: {{getAvailableCups()}}</p>
 <table mat-table [dataSource]="ordersDataSource" class="mat-elevation-z8">
 
   <!-- ID -->
@@ -15,12 +15,12 @@
   </ng-container>
 
   <!-- Date -->
-  <ng-container class="mat-column-date" matColumnDef="date">
-    <th mat-header-cell *matHeaderCellDef>Date</th>
-    <td mat-cell *matCellDef="let order">
-      {{order['date']}}
-    </td>
-  </ng-container>
+<!--  <ng-container class="mat-column-date" matColumnDef="date">-->
+<!--    <th mat-header-cell *matHeaderCellDef>Date</th>-->
+<!--    <td mat-cell *matCellDef="let order">-->
+<!--      {{order['date']}}-->
+<!--    </td>-->
+<!--  </ng-container>-->
 
   <!-- FullCups -->
   <ng-container class="mat-column-full-cups" matColumnDef="fullCups">
